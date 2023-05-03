@@ -5,6 +5,7 @@
 package csvjson;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  *
@@ -13,7 +14,8 @@ import java.time.LocalDate;
 public class Pojo {
 
     //Atributos
-    private String empleado;
+    private String apellido;
+    private String nombre;
 
     private String dni;
 
@@ -30,14 +32,6 @@ public class Pojo {
     private boolean coordinador;
 
     public Pojo() {
-    }
-
-    public String getEmpleado() {
-        return empleado;
-    }
-
-    public void setEmpleado(String empleado) {
-        this.empleado = empleado;
     }
 
     public String getDni() {
@@ -97,8 +91,51 @@ public class Pojo {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.dni);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pojo other = (Pojo) obj;
+        return Objects.equals(this.dni, other.dni);
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
     public String toString() {
-        return empleado + ";" + dni + ";" + puesto + ";" + fechaPosesion + ";" + fechaCese + ";" + telefono + ";" + evaluador + ";" + coordinador;
+        return apellido + "," + nombre + "," + dni + "," + puesto + "," + fechaPosesion + "," + fechaCese + "," + telefono + "," + evaluador + "," + coordinador + ",";
     }
 
 }
+
+    
+
+        
+
